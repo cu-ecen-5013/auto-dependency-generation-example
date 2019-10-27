@@ -18,6 +18,8 @@ OBJFILES := $(SRCS:%.c=%.o)
 all : $(APPNAME)
 default : $(APPNAME)
 
+test : ; @./test.sh
+
 # Remove all build intermediats and output file
 clean : ; @rm -rf $(APPNAME) *.o
 
