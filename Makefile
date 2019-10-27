@@ -31,10 +31,11 @@ $(APPNAME) : $(OBJFILES)
 CFLAGS += -Wall -Werror
 
 # The below content is from  http://make.mad-scientist.net/papers/advanced-auto-dependency-generation/
-# With the following changes:
+# with the following changes:
 # 	1) Added comments
 # 	2) Removed TARGET_ARCH from COMPILE.c since it's no longer listed in the [default rules](https://www.gnu.org/software/make/manual/html_node/Catalogue-of-Rules.html#Catalogue-of-Rules) and [isn't documented](https://lists.gnu.org/archive/html/help-make/2010-06/msg00005.html)
-#
+# Original content below is:
+# Copyright © 1997-2019 Paul D. Smith Verbatim copying and distribution is permitted in any medium, provided this notice is preserved.
 
 # The directory (hidden) where dependency files will be stored
 DEPDIR := .deps
