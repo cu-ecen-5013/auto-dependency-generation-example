@@ -20,7 +20,7 @@ default : $(APPNAME)
 
 test : ; @./test.sh
 
-# Remove all build intermediats and output file
+# Remove all build intermediates and output file
 clean : ; @rm -rf $(APPNAME) *.o
 
 # Build the application by running the link step with all objfile inputs
