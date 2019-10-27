@@ -65,7 +65,7 @@ $(DEPDIR): ; @mkdir -p $@
 
 # Use pattern rules to build a list of DEPFILES
 DEPFILES := $(SRCS:%.c=$(DEPDIR)/%.d)
-# Mention each of the dependency files as a target, so make won't fail if hte file doesn't exist
+# Mention each of the dependency files as a target, so make won't fail if the file doesn't exist
 $(DEPFILES):
 
 # Include all dependency files which exist, to include the relevant targets.
