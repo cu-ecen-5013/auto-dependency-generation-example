@@ -10,7 +10,7 @@ expect_file_contains()
 {
 	local file=$1
 	local content=$2
-	grep $content $file
+	grep $content $file > /dev/null
 	if [ $? -ne 0 ]; then
 		echo "expected file to contain ${content} but did not find in the file"
 		missing_expected_content="$missing_expected_content:$content"
@@ -23,7 +23,7 @@ expect_file_does_not_contain()
 {
 	local file=$1
 	local content=$2
-	grep $content $file
+	grep $content $file > /dev/null
 	if [ $? -eq 0 ]; then
 		echo "ERROR!!! expected file should not contain ${content} but found in the file"
 		contains_unexpected_content="$contains_unexpected_content:$content"
@@ -35,8 +35,8 @@ make_output_file=`mktemp`
 
 # Get the make up to date with latest source
 set -e
-make clean
-make
+make clean > /dev/null
+make > /dev/null
 set +e
 
 touch file1.h
@@ -51,7 +51,7 @@ expect_file_does_not_contain $make_output_file 'file2.c'
 
 touch file2.h
 make > $make_output_file 2>&1
-echo make output after toucing file2.h was:
+echo make output after touching file2.h was:
 cat $make_output_file
 
 expect_file_contains $make_output_file 'depend-generation-test'
@@ -69,6 +69,8 @@ expect_file_contains $make_output_file 'depend-generation-test'
 expect_file_contains $make_output_file 'main.c'
 expect_file_does_not_contain $make_output_file 'file2.c'
 expect_file_does_not_contain $make_output_file 'file1.c'
+
+rm $make_output_file
 
 if [ -n "$missing_expected_content" ] || [ -n "$contains_unexpected_content" ]; then
 	echo "At least one test failed"
