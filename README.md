@@ -7,3 +7,6 @@ This project provides a template set of source, header, and makefiles to demonst
 
 ## Testing
 Run `make test` to invoke the [test.sh](test.sh) script.  This script touches header and source files and checks make output to ensure exactly expected build steps are being invoked.
+
+## Contributing
+Pull requests are welcome for any improvement suggestions.  Please use the issues tab to open.
